@@ -1,4 +1,4 @@
-# 🧠 Credit Risk Analysis using XGBoost and LightGBM
+#  Credit Risk Analysis using XGBoost and LightGBM
 
 This project predicts the probability of loan default using the [Home Credit Default Risk](https://www.kaggle.com/competitions/home-credit-default-risk) dataset. It leverages ensemble models like **LightGBM** and **XGBoost**, with a strong focus on interpretability using **SHAP**.
 
@@ -22,8 +22,8 @@ credit-risk-project/
 
 | Model    | AUC (Validation) |
 | -------- | ---------------- |
-| LightGBM | 0.79             |
-| XGBoost  | 0.76             |
+| LightGBM | 0.76             |
+| XGBoost  | 0.75             |
 
 - Used `StratifiedShuffleSplit` with 20% validation
 - Evaluated with AUC-ROC on unseen validation data
@@ -51,13 +51,7 @@ predict_risk(sk_id=100001)
 
 ---
 
-##  Future Work
 
-- Streamlit dashboard for live scoring and interpretability
-- Integrate auxiliary tables (bureau, previous applications)
-- Hyperparameter tuning and model ensembling
-
----
 
 ##  Author
 

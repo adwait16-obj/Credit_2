@@ -98,8 +98,8 @@ By combining SHAP with high-performing models like XGBoost and LightGBM, we ensu
 
 #### LightGBM
 
-LightGBM AUC-ROC = 0.76
-XGBoost AUC-ROC = 0.75
+LightGBM AUC-ROC = 0.7634
+XGBoost AUC-ROC = 0.7605
 
 ---
 
@@ -107,8 +107,8 @@ XGBoost AUC-ROC = 0.75
 
 | Model    | AUC (Validation) |
 | -------- | ---------------- |
-| LightGBM | 0.76             |
-| XGBoost  | 0.75             |
+| LightGBM | 0.7634             |
+| XGBoost  | 0.7605             |
 
 - Used `StratifiedShuffleSplit` with 20% validation
 - Evaluated with AUC-ROC on unseen validation data

@@ -1,10 +1,10 @@
-# 🧠 Credit Risk Analysis with LightGBM, XGBoost, and SHAP
+#  Credit Risk Analysis with LightGBM, XGBoost, and SHAP
 
 This project presents a detailed implementation of **credit default prediction** using gradient-boosted decision trees. It leverages the [Home Credit Default Risk dataset](https://www.kaggle.com/competitions/home-credit-default-risk) to build interpretable models capable of identifying potentially risky loan applicants.
 
 ---
 
-## ✅ Objective
+##  Objective
 
 - Predict the probability of **loan default** from loan application and credit history.
 - Engineer features from auxiliary data (e.g., `bureau.csv`) to capture behavioral signals.
@@ -13,7 +13,7 @@ This project presents a detailed implementation of **credit default prediction**
 
 ---
 
-## ⚙️ Methodology
+##  Methodology
 
 ### 1. Data Sources
 

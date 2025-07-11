@@ -4,20 +4,6 @@ This project predicts the probability of loan default using the [Home Credit Def
 
 ---
 
-##  Project Structure
-
-```
-credit-risk-project/
-├── notebooks/                # Jupyter notebooks with EDA, modeling, SHAP
-├── outputs/                  # Model predictions (not pushed to GitHub)
-├── feature_engineering.py    # Custom feature transformations
-├── requirements.txt          # Reproducible dependencies
-├── README.md
-└── .gitignore
-```
-
----
-
 ##  Models and Results
 
 | Model    | AUC (Validation) |

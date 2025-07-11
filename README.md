@@ -128,11 +128,41 @@ SHAP was used to analyze both global and individual predictions:
 ---
 ### SHAP Summary Plot — LightGBM
 
-![SHAP LightGBM](outputs/shap_summary_lgbm.png)
+![SHAP LightGBM](outputs/im_2.png)
 
 ### SHAP Summary Plot — XGBoost
 
-![SHAP XGBoost](outputs/shap_summary_xgb.png)
+![SHAP XGBoost](outputs/im_3.png)
+
+---
+
+## Local SHAP Explanation
+
+The SHAP waterfall plot below explains the model's prediction for a single applicant.
+
+It breaks down the contribution of each feature to the final model output (log-odds), showing how the prediction deviates from the base expectation.
+
+### Example: Applicant `SK_ID_CURR = 100001`
+
+![SHAP Waterfall Plot](outputs/im_1.png)
+
+**Interpretation:**
+- **Base value**: `E[f(x)] = -2.762` — the average model prediction (log-odds of default) over all applicants.
+- **Model output**: `f(x) = -4.311` — the final prediction for this applicant, indicating a **very low probability of default**.
+
+### Key Insights:
+
+- Features like `EXT_SOURCE_1`, `EXT_SOURCE_3`, and `DAYS_EMPLOYED` significantly **reduced risk** (blue bars).
+- Features like `AMT_CREDIT` and `AMT_ANNUITY` slightly **increased risk** (red bars).
+- Features such as `CODE_GENDER` and `BUREAU_DEBT_SUM` had minimal effect.
+
+To convert the log-odds output into a probability:
+
+```python
+from scipy.special import expit
+expit(-4.311)  # ≈ 0.0132
+
+
 ---
 ##  Sample Output
 
@@ -143,6 +173,29 @@ predict_risk(sk_id=100001)
 
 ---
 
+### Key Insight: Most Influential Features
+
+Among all features, **EXT_SOURCE_1** and **AMT_CREDIT** emerged as top contributors to model predictions:
+
+- `EXT_SOURCE_1`: An external credit score representing the applicant’s reliability, where **higher values indicate lower risk**. SHAP analysis revealed this as the most **protective** factor against default.
+- `AMT_CREDIT`: The total amount of credit applied for by the applicant. Larger loan amounts were strongly associated with **higher risk**, making this a key **risk-driving** feature.
+
+These insights were derived from SHAP summary and waterfall plots, providing transparency into how the model reasons about creditworthiness.
+
+
+---
+
+
+## Conclusion
+
+This project demonstrates a complete credit risk modeling pipeline built on the Home Credit Default Risk dataset. We successfully:
+
+- Preprocessed and integrated multiple data sources covering 300K+ loan applications
+- Engineered domain-specific risk features and handled missing data robustly
+- Trained and evaluated high-performance models (LightGBM and XGBoost), achieving AUC-ROC scores of 0.7634 and 0.7605 respectively
+- Applied SHAP for detailed interpretability — both global (feature importance) and local (individual decisions)
+
+---
 
 
 ##  Author

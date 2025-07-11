@@ -4,6 +4,64 @@ This project presents a detailed implementation of **credit default prediction**
 
 ---
 
+## Important terminologies
+## Technical Primer: Algorithms and Interpretability
+
+### What is XGBoost?
+
+XGBoost (Extreme Gradient Boosting) is an efficient and scalable implementation of gradient-boosted decision trees. It is particularly effective for structured/tabular datasets and is widely used in machine learning competitions.
+
+Key characteristics:
+- Regularization (L1 and L2) to reduce overfitting
+- Tree boosting via gradient descent optimization
+- Row and column subsampling for variance reduction
+- Parallel and distributed training for speed
+
+XGBoost builds models iteratively, where each new tree corrects the residuals of the previous ones.
+
+---
+
+### What is LightGBM?
+
+LightGBM (Light Gradient Boosting Machine) is a high-performance gradient boosting framework developed by Microsoft. It is optimized for both speed and efficiency, especially on large datasets with categorical features.
+
+Key features:
+- Histogram-based split finding
+- Leaf-wise tree growth with depth constraints
+- Efficient handling of categorical variables
+- Lower memory usage and faster training compared to XGBoost
+
+LightGBM is particularly suitable for high-dimensional, sparse data and is often preferred in large-scale production pipelines.
+
+---
+
+### What is SHAP?
+
+SHAP (SHapley Additive exPlanations) is a unified framework for interpreting machine learning predictions based on game theory. It attributes to each feature the contribution it made to a particular prediction, ensuring fairness and consistency.
+
+Key principles:
+- SHAP values represent the average marginal contribution of a feature across all possible coalitions (feature combinations).
+- The sum of SHAP values for all features equals the difference between the actual model output and the expected output.
+- Provides both global interpretability (feature importance across all samples) and local interpretability (why a model predicted a specific value for one sample).
+
+SHAP visualizations used in this project include:
+- Summary bar plots to rank global feature importance
+- Waterfall plots to explain individual predictions
+
+---
+
+### Why Interpretability Matters
+
+In credit risk modeling, interpretability is crucial due to:
+
+- Regulatory compliance (e.g., explaining loan rejection decisions)
+- Transparency for stakeholders and clients
+- Trustworthiness and fairness in automated decision-making systems
+- Model debugging and feature selection insights
+
+By combining SHAP with high-performing models like XGBoost and LightGBM, we ensure that our predictions are not only accurate but also explainable and reliable.
+
+
 ##  Objective
 
 - Predict the probability of **loan default** from loan application and credit history.
@@ -68,7 +126,14 @@ SHAP was used to analyze both global and individual predictions:
 - Visualized summary plots and individual waterfall explanations
 
 ---
+### SHAP Summary Plot — LightGBM
 
+![SHAP LightGBM](outputs/shap_summary_lgbm.png)
+
+### SHAP Summary Plot — XGBoost
+
+![SHAP XGBoost](outputs/shap_summary_xgb.png)
+---
 ##  Sample Output
 
 ```python
